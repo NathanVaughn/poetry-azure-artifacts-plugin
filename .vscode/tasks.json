@@ -16,11 +16,6 @@
             "command": "poetry run pre-commit run --all-files",
             "type": "shell",
             "dependsOn": ["install"]
-        },
-        {
-            "label": "tests",
-            "command": "poetry run pytest --cov=TODO/ --cov-report html",
-            "type": "shell"
         }
     ]
 }

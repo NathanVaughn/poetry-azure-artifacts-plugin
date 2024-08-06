@@ -1,25 +1,23 @@
 [tool.poetry]
-    name        = "TODOPROJECTNAME"
-    version     = "0.1.0"
-    description = "TODODESC"
-    license     = "MIT"
-    readme      = "README.md"
-    authors     = ["TODONAME <TODOEMAIL>"]
-    homepage    = "https://github.com/TODOREPO"
-    repository  = "https://github.com/TODOREPO.git"
-    # TODO DETERMINE
+    name         = "poetry-azure-artifacts-plugin"
+    version      = "0.1.0"
+    description  = "Poetry plugin to handle Azure Artifacts authentication"
+    license      = "MIT"
+    readme       = "README.md"
+    authors      = ["Nathan Vaughn <nathn@nvaughn.email>"]
+    homepage     = "https://github.com/NathanVaughn/poetry-azure-artifacts-plugin"
+    repository   = "https://github.com/NathanVaughn/poetry-azure-artifacts-plugin.git"
     package-mode = false
-    # packages     = [{ include = "TODO" }]
 
 [tool.poetry.urls]
-    Issues = "https://github.com/TODOREPO/issues"
+    Issues = "https://github.com/NathanVaughn/poetry-azure-artifacts-plugin/issues"
 
 [tool.poetry.dependencies]
-    python = "^3.12"
+    python            = "^3.12"
+    artifacts-keyring = "^0.3.6"
+    poetry            = "^1.8.3"
 
 [tool.poetry.group.dev.dependencies]
-    pytest     = "8.3.2"
-    pytest-cov = "5.0.0"
     pre-commit = "3.8.0"
 
 [tool.coverage.run]
