@@ -1,3 +1,5 @@
+# https://github.com/semgrep/poetry-codeartifact-plugin/tree/main
+
 from typing import Any
 from urllib.parse import urlparse
 
@@ -43,8 +45,9 @@ def monkeypatch_authenticator(io: IO) -> None:
 
                     # if we didn't get a token
                     if username is None or token is None:
-                        raise PoetryException(f"Failed getting new Azure Artifacts token for repo {
-                            config.name}")
+                        raise PoetryException(
+                            f"Failed getting new Azure Artifacts token for repo {config.name}"
+                        )
 
                     # set the new token
                     self._password_manager.set_http_password(
