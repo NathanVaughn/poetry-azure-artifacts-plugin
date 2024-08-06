@@ -1,0 +1,21 @@
+name: Tests
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    permissions:
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python_version: ["3.12", "3.11", "3.10", "3.9"]
+
+    uses: NathanVaughn/reusable-actions/.github/workflows/python-test.yml@main
+    with:
+      python_version: ${{ matrix.python_version }}

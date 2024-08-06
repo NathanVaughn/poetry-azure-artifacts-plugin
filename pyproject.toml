@@ -1,0 +1,36 @@
+[tool.poetry]
+    name        = "TODOPROJECTNAME"
+    version     = "0.1.0"
+    description = "TODODESC"
+    license     = "MIT"
+    readme      = "README.md"
+    authors     = ["TODONAME <TODOEMAIL>"]
+    homepage    = "https://github.com/TODOREPO"
+    repository  = "https://github.com/TODOREPO.git"
+    # TODO DETERMINE
+    package-mode = false
+    # packages     = [{ include = "TODO" }]
+
+[tool.poetry.urls]
+    Issues = "https://github.com/TODOREPO/issues"
+
+[tool.poetry.dependencies]
+    python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+    pytest     = "8.3.2"
+    pytest-cov = "5.0.0"
+    pre-commit = "3.8.0"
+
+[tool.coverage.run]
+    omit = ["tests/*"]
+
+[tool.pyright]
+    typeCheckingMode           = "basic"
+    venvPath                   = "."
+    venv                       = ".venv"
+    reportMissingParameterType = true
+
+[build-system]
+    requires      = ["poetry-core"]
+    build-backend = "poetry.core.masonry.api"

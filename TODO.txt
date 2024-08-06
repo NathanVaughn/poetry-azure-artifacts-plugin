@@ -1,0 +1,5 @@
+1. Replace items starting with TODO
+2. Allow Actions to create pull requests in this repo
+3. Run `poetry lock`
+4. Run `pipx run pre-commit-update`
+5. Delete this file
