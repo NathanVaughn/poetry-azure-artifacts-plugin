@@ -88,4 +88,4 @@ jobs:
 
       - name: Test Poetry
         # at least make sure it doesn't crash
-        run: poetry_test --version
+        run: poetry_test lock
