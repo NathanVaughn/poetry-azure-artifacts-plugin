@@ -14,6 +14,8 @@ care of authentication with Azure Artifacts feeds. This is heavily based on
 
 ## Usage
 
+This plugin requires Python 3.9+ which is a bit less lenient than Poetry itself.
+
 Install this plugin with
 
 ```bash
@@ -37,13 +39,12 @@ priority = "primary"
 
 Now, when running `poetry install`, or `poetry lock`, Poetry will automatically
 fetch credentials for your Azure Artifacts feed, utilizing
-[artifact-keyring](https://github.com/microsoft/artifact-keyring).
+[artifacts-keyring](https://github.com/microsoft/artifacts-keyring).
+Note: `artifacts-keyring` requires `dotnet` to be installed and available in your PATH.
 
-This works automatically by recognizing authentication failures to URLs containing
-`pkgs.dev.azure.com` and `pkgs.visualstudio.com`.
-
-If you have an on-premises Azure DevOps server,
-make the source name include the text `azure-artifacts`:
+This works by recognizing authentication failures to URLs containing
+`pkgs.dev.azure.com` and `pkgs.visualstudio.com`. If you have an on-premises
+Azure DevOps server, make the source name include the text `azure-artifacts`:
 
 ```toml
 [[tool.poetry.source]]

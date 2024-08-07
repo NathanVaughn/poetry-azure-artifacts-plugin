@@ -14,7 +14,8 @@
     Issues = "https://github.com/NathanVaughn/poetry-azure-artifacts-plugin/issues"
 
 [tool.poetry.dependencies]
-    python            = "^3.12"
+    # https://github.com/python-poetry/poetry/blob/main/pyproject.toml#L32
+    python            = "^3.9"
     artifacts-keyring = "^0.3.6"
     poetry            = "^1.8.3"
 
