@@ -37,10 +37,12 @@ def monkeypatch_authenticator(io: IO) -> None:
                 or ("pkgs.visualstudio.com" in netloc)
                 or (config is not None and "azure-artifacts" in config.name)
             ) and config:
+                # Ruff tries to line break the {config.name} string which results in a syntax error
+                # fmt:off
                 io.write_line(
-                    f"Getting new Azure Artifacts token for repo {
-                        config.name}"
+                    f"Getting new Azure Artifacts token for repo {config.name}"
                 )
+                # fmt:on
 
                 # get token from credential provider
                 username, token = (
