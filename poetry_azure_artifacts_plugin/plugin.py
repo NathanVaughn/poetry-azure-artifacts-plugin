@@ -37,10 +37,10 @@ def monkeypatch_authenticator(io: IO) -> None:
                 or ("pkgs.visualstudio.com" in netloc)
                 or (config is not None and "azure-artifacts" in config.name)
             ) and config:
-                io.write_line(
-                    f"Getting new Azure Artifacts token for repo {
-                        config.name}"
-                )
+                # Ruff tries to line break the {config.name} string which results in a syntax error
+                # fmt:off
+                io.write_line(f"Getting new Azure Artifacts token for repo {config.name}")
+                # fmt:on
 
                 # get token from credential provider
                 username, token = (
@@ -49,10 +49,10 @@ def monkeypatch_authenticator(io: IO) -> None:
 
                 # if we didn't get a token
                 if username is None or token is None:
-                    raise PoetryException(
-                        f"Failed getting new Azure Artifacts token for repo {
-                            config.name}"
-                    )
+                    # Ruff tries to line break the {config.name} string which results in a syntax error
+                    # fmt:off
+                    raise PoetryException(f"Failed getting new Azure Artifacts token for repo {config.name}")
+                    # fmt:on
 
                 # set the new token
                 self._password_manager.set_http_password(config.name, username, token)
