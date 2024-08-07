@@ -7,15 +7,85 @@ on:
       - main
 
 jobs:
+  bake:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Poetry/vscode-task-runner
+        uses: threeal/pipx-install-action@v1.0.0
+        with:
+          packages: |
+            poetry
+            vscode-task-runner
+
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: poetry
+
+      - name: Install Dependencies
+        run: vtr install
+
+      - name: Build Matrix
+        id: script
+        run: poetry run python scripts/get_poetry_versions.py
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+    outputs:
+      poetry_versions: ${{ steps.script.outputs.poetry_versions }}
+
   test:
+    needs: bake
+    runs-on: ubuntu-latest
+
     permissions:
       contents: read
 
     strategy:
       fail-fast: false
       matrix:
-        python_version: ["3.12", "3.11", "3.10", "3.9"]
+        poetry_version: ${{ fromJSON(needs.bake.outputs.poetry_versions) }}
+        python_version: ["3.9"]
 
-    uses: NathanVaughn/reusable-actions/.github/workflows/python-test.yml@main
-    with:
-      python_version: ${{ matrix.python_version }}
+    if: "${{ !contains(github.event.head_commit.message, 'ci skip') }}"
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Poetry/vscode-task-runner
+        uses: threeal/pipx-install-action@v1.0.0
+        with:
+          packages: |
+            poetry
+            vscode-task-runner
+
+      - name: Setup Python ${{ matrix.python_version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python_version }}
+          cache: poetry
+
+      - name: Cache Pre-Commit
+        uses: NathanVaughn/actions-pre-commit-cache@main
+
+      - name: Run Pre-Commit Checks
+        run: vtr pre-commit --color=always --show-diff-on-failure
+
+      - name: Install Poetry Test Version
+        run: |
+          vtr build
+          pipx install --suffix _test poetry==${{ matrix.poetry_version }}
+          pipx inject poetry_test ./dist/poetry_azure_artifacts_plugin*.whl
+
+      - name: Test Poetry
+        # at least make sure it doesn't crash
+        run: poetry_test --version

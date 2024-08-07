@@ -13,14 +13,18 @@
 [tool.poetry.urls]
     Issues = "https://github.com/NathanVaughn/poetry-azure-artifacts-plugin/issues"
 
+[tool.ruff]
+    target-version = "py39"
+
 [tool.poetry.dependencies]
     # https://github.com/python-poetry/poetry/blob/main/pyproject.toml#L32
     python            = "^3.9"
     artifacts-keyring = "^0.3.6"
-    poetry            = "^1.8.3"
+    poetry            = ">=1.6.0"
 
 [tool.poetry.group.dev.dependencies]
     pre-commit = "3.8.0"
+    tomli      = {version="^2.0.1", python = "<3.11"} # not needed in 3.11+
 
 [tool.poetry.plugins."poetry.plugin"]
     poetry-azure-artifacts-plugin = "poetry_azure_artifacts_plugin.plugin:AzureArtifactsPlugin"
