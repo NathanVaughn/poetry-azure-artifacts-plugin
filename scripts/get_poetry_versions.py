@@ -6,9 +6,9 @@ import urllib.request
 
 def main():
     try:
-        import tomllib
+        import tomllib  # type: ignore
     except ImportError:
-        import tomli as tomllib
+        import tomli as tomllib  # type: ignore
 
     # read minimum poetry version from pyproject.toml
     with open("pyproject.toml", "rb") as fp:
