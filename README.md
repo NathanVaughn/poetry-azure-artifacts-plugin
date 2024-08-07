@@ -14,6 +14,8 @@ care of authentication with Azure Artifacts feeds. This is heavily based on
 
 ## Usage
 
+This plugin requires Python 3.9+ which is a bit less lenient than Poetry itself.
+
 Install this plugin with
 
 ```bash
