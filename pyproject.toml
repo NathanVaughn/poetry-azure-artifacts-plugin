@@ -1,6 +1,6 @@
 [tool.poetry]
     name         = "poetry-azure-artifacts-plugin"
-    version      = "0.1.0"
+    version      = "0.1.1"
     description  = "Poetry plugin to handle Azure Artifacts authentication"
     license      = "MIT"
     readme       = "README.md"
