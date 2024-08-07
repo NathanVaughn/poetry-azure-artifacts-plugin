@@ -7,7 +7,7 @@
     authors      = ["Nathan Vaughn <nathn@nvaughn.email>"]
     homepage     = "https://github.com/NathanVaughn/poetry-azure-artifacts-plugin"
     repository   = "https://github.com/NathanVaughn/poetry-azure-artifacts-plugin.git"
-    packages     = [{ include = "poetry-azure-artifacts-plugin" }]
+    packages     = [{ include = "poetry_azure_artifacts_plugin" }]
     package-mode = true
 
 [tool.poetry.urls]
@@ -22,7 +22,7 @@
     pre-commit = "3.8.0"
 
 [tool.poetry.plugins."poetry.plugin"]
-    poetry-azure-artifacts-plugin = "poetry-azure-artifacts-plugin.plugin:AzureArtifactsPlugin"
+    poetry-azure-artifacts-plugin = "poetry_azure_artifacts_plugin.plugin:AzureArtifactsPlugin"
 
 [tool.coverage.run]
     omit = ["tests/*"]

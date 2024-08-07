@@ -1,0 +1,35 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - release
+
+jobs:
+  build:
+    permissions:
+      actions: write
+      contents: write
+      id-token: write
+      attestations: write
+
+    uses: NathanVaughn/reusable-actions/.github/workflows/pypi-build.yml@main
+
+  publish:
+    needs: build
+
+    permissions:
+      id-token: write
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: pkg-dist
+          path: dist/
+
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
