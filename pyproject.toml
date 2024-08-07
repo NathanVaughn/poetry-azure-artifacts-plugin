@@ -20,7 +20,8 @@
     # https://github.com/python-poetry/poetry/blob/main/pyproject.toml#L32
     python            = "^3.9"
     artifacts-keyring = "^0.3.6"
-    poetry            = ">=1.6.0"
+    # below 1.8.0 does not support package mode
+    poetry            = ">=1.8.0"
 
 [tool.poetry.group.dev.dependencies]
     pre-commit = "3.8.0"
