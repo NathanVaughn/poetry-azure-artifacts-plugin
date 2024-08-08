@@ -1,8 +1,9 @@
 # Poetry Azure Artifacts Plugin
 
-[![Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![GitHub license](https://img.shields.io/github/license/NathanVaughn/poetry-azure-artifacts-plugin)](https://github.com/NathanVaughn/poetry-azure-artifacts-plugin/blob/main/LICENSE)
+[![PyPi version](https://img.shields.io/pypi/v/poetry-azure-artifacts-plugin.svg)](https://pypi.org/project/poetry-azure-artifacts-plugin)
 [![PyPi versions](https://img.shields.io/pypi/pyversions/poetry-azure-artifacts-plugin)](https://pypi.org/project/poetry-azure-artifacts-plugin)
 [![PyPi downloads](https://img.shields.io/pypi/dm/poetry-azure-artifacts-plugin)](https://pypi.org/project/poetry-azure-artifacts-plugin)
 
