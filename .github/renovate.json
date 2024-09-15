@@ -1,31 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
-  "pre-commit": {
-    "enabled": true
-  },
-  "packageRules": [
-    {
-      "matchCategories": ["docker"],
-      "groupName": "docker"
-    },
-    {
-      "matchCategories": ["cd"],
-      "groupName": "cd"
-    },
-    {
-      "matchCategories": ["python"],
-      "groupName": "python"
-    },
-    {
-      "matchManagers": ["git-submodules"],
-      "groupName": "submodules"
-    },
-    {
-      "matchManagers": ["pre-commit"],
-      "groupName": "pre-commit"
-    }
-  ]
+  "extends": ["github>nathanvaughn/renovate-config"]
 }
