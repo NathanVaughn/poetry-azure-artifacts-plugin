@@ -1,9 +1,9 @@
 [project]
-    name         = "poetry-azure-artifacts-plugin"
-    version      = "0.1.1"
-    description  = "Poetry plugin to handle Azure Artifacts authentication"
-    readme       = "README.md"
-    authors      = [{ name = "Nathan Vaughn", email = "nath@nvaughn.email" }]
+    name = "poetry-azure-artifacts-plugin"
+    version = "0.1.1"
+    description = "Poetry plugin to handle Azure Artifacts authentication"
+    readme = "README.md"
+    authors = [{ name = "Nathan Vaughn", email = "nath@nvaughn.email" }]
     classifiers = [
         "Intended Audience :: Developers",
         "Topic :: Software Development :: Libraries :: Python Modules",
@@ -18,7 +18,7 @@
     dependencies = [
         # https://github.com/python-poetry/poetry/blob/main/pyproject.toml#L32
         "artifacts-keyring>=0.3.6",
-        "poetry>=1.8.0"
+        "poetry>=1.8.0",
     ]
 
 [project.urls]
@@ -26,14 +26,11 @@
     Repository = "https://github.com/NathanVaughn/poetry-azure-artifacts-plugin.git"
     Issues     = "https://github.com/NathanVaughn/poetry-azure-artifacts-plugin/issues"
 
-[tool.ruff]
-    target-version = "py39"
-
 [tool.uv]
     dev-dependencies = [
         "pre-commit>=3.2.0",
         "pre-commit-uv>=3.8.0",
-        "tomli>=2.0.1; python_version < '3.11'"
+        "tomli>=2.0.1; python_version < '3.11'",
     ]
 
 [tool.poetry.plugins."poetry.plugin"]
