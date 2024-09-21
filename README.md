@@ -3,7 +3,6 @@
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![GitHub license](https://img.shields.io/github/license/NathanVaughn/poetry-azure-artifacts-plugin)](https://github.com/NathanVaughn/poetry-azure-artifacts-plugin/blob/main/LICENSE)
-[![PyPi version](https://img.shields.io/pypi/v/poetry-azure-artifacts-plugin.svg)](https://pypi.org/project/poetry-azure-artifacts-plugin)
 [![PyPi versions](https://img.shields.io/pypi/pyversions/poetry-azure-artifacts-plugin)](https://pypi.org/project/poetry-azure-artifacts-plugin)
 [![PyPi downloads](https://img.shields.io/pypi/dm/poetry-azure-artifacts-plugin)](https://pypi.org/project/poetry-azure-artifacts-plugin)
 
@@ -41,11 +40,13 @@ priority = "primary"
 Now, when running `poetry install`, or `poetry lock`, Poetry will automatically
 fetch credentials for your Azure Artifacts feed, utilizing
 [artifacts-keyring](https://github.com/microsoft/artifacts-keyring).
-Note: `artifacts-keyring` requires `dotnet` to be installed and available in your PATH.
+Note: `artifacts-keyring` requires `dotnet` to be installed and available
+in your PATH.
 
 This works by recognizing authentication failures to URLs containing
 `pkgs.dev.azure.com` or `pkgs.visualstudio.com`. If you have an on-premises
-Azure DevOps server that works with `artifacts-keyring`, instead make the source name include the text `azure-artifacts`:
+Azure DevOps server that works with `artifacts-keyring`, instead make the
+source name include the text `azure-artifacts`:
 
 ```toml
 [[tool.poetry.source]]
@@ -60,10 +61,8 @@ Use the provided [devcontainer](https://containers.dev/)
 or run the following for local development:
 
 ```bash
-python -m pip install pipx --upgrade
-pipx ensurepath
-pipx install poetry
-pipx install vscode-task-runner
-# (Optionally) Add pre-commit plugin
-poetry self add poetry-pre-commit-plugin
+# Install uv
+# https://docs.astral.sh/uv/getting-started/installation/
+uv tool install vscode-task-runner
+vtr install
 ```
