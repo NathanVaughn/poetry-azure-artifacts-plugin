@@ -41,11 +41,13 @@ priority = "primary"
 Now, when running `poetry install`, or `poetry lock`, Poetry will automatically
 fetch credentials for your Azure Artifacts feed, utilizing
 [artifacts-keyring](https://github.com/microsoft/artifacts-keyring).
-Note: `artifacts-keyring` requires `dotnet` to be installed and available in your PATH.
+Note: `artifacts-keyring` requires `dotnet` to be installed and available
+in your PATH.
 
 This works by recognizing authentication failures to URLs containing
 `pkgs.dev.azure.com` or `pkgs.visualstudio.com`. If you have an on-premises
-Azure DevOps server that works with `artifacts-keyring`, instead make the source name include the text `azure-artifacts`:
+Azure DevOps server that works with `artifacts-keyring`, instead make the
+source name include the text `azure-artifacts`:
 
 ```toml
 [[tool.poetry.source]]

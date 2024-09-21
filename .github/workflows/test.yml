@@ -17,25 +17,15 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Install Poetry/vscode-task-runner
-        uses: threeal/pipx-install-action@v1.0.0
-        with:
-          packages: |
-            poetry
-            vscode-task-runner
-
-      - name: Setup Python 3.12
+      - name: Install Python 3.12
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: poetry
-
-      - name: Install Dependencies
-        run: vtr install
 
       - name: Build Matrix
         id: script
-        run: poetry run python scripts/get_poetry_versions.py
+        # just need a python version new enough to have tomllib
+        run: python scripts/get_poetry_versions.py
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
@@ -61,18 +51,19 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Install Poetry/vscode-task-runner
-        uses: threeal/pipx-install-action@v1.0.0
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v3
         with:
-          packages: |
-            poetry
-            vscode-task-runner
+          enable-cache: true
+          version: "latest"
 
-      - name: Setup Python ${{ matrix.python_version }}
+      - name: Install Python ${{ matrix.python_version }}
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python_version }}
-          cache: poetry
+          python-version: "${{ matrix.python_version }}"
+
+      - name: Install vscode-task-runner
+        run: uv tool install vscode-task-runner
 
       - name: Cache Pre-Commit
         uses: NathanVaughn/actions-pre-commit-cache@main
@@ -83,9 +74,8 @@ jobs:
       - name: Install Poetry Test Version
         run: |
           vtr build
-          pipx install --suffix _test poetry==${{ matrix.poetry_version }}
-          pipx inject poetry_test ./dist/poetry_azure_artifacts_plugin*.whl
+          uv tool install --with ./dist/poetry_azure_artifacts_plugin*.whl poetry==${{ matrix.poetry_version }}
 
       - name: Test Poetry
         # at least make sure it doesn't crash
-        run: poetry_test lock
+        run: poetry lock --directory=testproject
