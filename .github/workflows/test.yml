@@ -43,7 +43,7 @@ jobs:
       fail-fast: false
       matrix:
         poetry_version: ${{ fromJSON(needs.bake.outputs.poetry_versions) }}
-        python_version: ["3.12", "3.11", "3.10", "3.9"]
+        python_version: ["3.13", "3.12", "3.11", "3.10", "3.9"]
 
     if: "${{ !contains(github.event.head_commit.message, 'ci skip') }}"
 
@@ -74,7 +74,7 @@ jobs:
       - name: Install Poetry Test Version
         run: |
           vtr build
-          uv tool install --with ./dist/poetry_azure_artifacts_plugin*.whl poetry==${{ matrix.poetry_version }}
+          uv tool install --with ./dist/poetry_azure_artifacts_plugin*.whl poetry==${{ matrix.poetry_version }} --python ${{ matrix.python_version }}
 
       - name: Test Poetry
         # at least make sure it doesn't crash
