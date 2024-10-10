@@ -74,7 +74,7 @@ jobs:
       - name: Install Poetry Test Version
         run: |
           vtr build
-          uv tool install --with ./dist/poetry_azure_artifacts_plugin*.whl poetry==${{ matrix.poetry_version }}
+          uv tool install --with ./dist/poetry_azure_artifacts_plugin*.whl poetry==${{ matrix.poetry_version }} --python ${{ matrix.python_version }}
 
       - name: Test Poetry
         # at least make sure it doesn't crash
