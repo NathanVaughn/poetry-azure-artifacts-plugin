@@ -13,12 +13,10 @@ def main():
     # read minimum poetry version from pyproject.toml
     with open("pyproject.toml", "rb") as fp:
         pyproject = tomllib.load(fp)
-        poetry_version = (
-            pyproject["tool"]["poetry"]["dependencies"]["poetry"]
-            .removeprefix("^")
-            .removeprefix(">")
-            .removeprefix("=")
+        poetry_specifier = next(
+            d for d in pyproject["project"]["dependencies"] if d.startswith("poetry")
         )
+        poetry_version = poetry_specifier.split(">=")[1]
 
     # get all stable releases of poetry
     url = "https://api.github.com/repos/python-poetry/poetry/releases"
