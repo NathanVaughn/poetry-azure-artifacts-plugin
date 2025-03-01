@@ -27,7 +27,8 @@ repos:
 -   hooks:
     -   id: pyright
     repo: https://github.com/RobertCraigie/pyright-python
-    rev: v1.1.395
+    # 1.1.395 has a bug that complains about defaults
+    rev: v1.1.394
 -   hooks:
     -   id: markdownlint
     repo: https://github.com/igorshubovych/markdownlint-cli
