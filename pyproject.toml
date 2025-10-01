@@ -22,17 +22,17 @@
         "poetry>=1.8.0",
     ]
 
-[project.urls]
-    Homepage   = "https://github.com/NathanVaughn/poetry-azure-artifacts-plugin"
-    Repository = "https://github.com/NathanVaughn/poetry-azure-artifacts-plugin.git"
-    Issues     = "https://github.com/NathanVaughn/poetry-azure-artifacts-plugin/issues"
-
-[tool.uv]
-    dev-dependencies = [
+[dependency-groups]
+    dev = [
         "pre-commit>=3.2.0",
         "pre-commit-uv>=3.8.0",
         "tomli>=2.0.1; python_version < '3.11'",
     ]
+
+[project.urls]
+    Homepage   = "https://github.com/NathanVaughn/poetry-azure-artifacts-plugin"
+    Repository = "https://github.com/NathanVaughn/poetry-azure-artifacts-plugin.git"
+    Issues     = "https://github.com/NathanVaughn/poetry-azure-artifacts-plugin/issues"
 
 [tool.poetry.plugins."poetry.plugin"]
     poetry-azure-artifacts-plugin = "poetry_azure_artifacts_plugin.plugin:AzureArtifactsPlugin"
