@@ -12,7 +12,7 @@ repos:
 -   hooks:
     -   id: uv-lock
     repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.9.13
+    rev: 0.9.21
 -   hooks:
     -   id: absolufy-imports
     repo: https://github.com/MarcoGorelli/absolufy-imports
@@ -23,7 +23,7 @@ repos:
         id: ruff
     -   id: ruff-format
     repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.7
+    rev: v0.14.10
 -   hooks:
     -   id: pyright
     repo: https://github.com/RobertCraigie/pyright-python
@@ -32,4 +32,4 @@ repos:
 -   hooks:
     -   id: markdownlint
     repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.46.0
+    rev: v0.47.0
