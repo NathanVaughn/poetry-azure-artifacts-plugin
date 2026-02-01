@@ -18,7 +18,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v6
 
-      - name: Install Python 3.13
+      - name: Install Python 3.14
         uses: actions/setup-python@v6
         with:
           python-version: "3.14"
@@ -44,7 +44,10 @@ jobs:
       fail-fast: false
       matrix:
         poetry_version: ${{ fromJSON(needs.bake.outputs.poetry_versions) }}
-        python_version: ["3.13", "3.12", "3.11", "3.10", "3.9"]
+        # 3.14 doesn't work at the moment due to a old version of rapidfuzz being required as a dependency of cleo
+        # and rapidfuzz having an invalid pyproject.toml file in that version
+        # https://github.com/rapidfuzz/RapidFuzz/pull/433
+        python_version: ["3.13", "3.12", "3.11", "3.10"]
 
     if: "${{ !contains(github.event.head_commit.message, 'ci skip') }}"
 
