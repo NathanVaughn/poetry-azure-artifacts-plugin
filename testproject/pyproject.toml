@@ -1,3 +1,14 @@
+[project]
+    name = "testproject"
+    version = "0.1.0"
+    description = ""
+    readme = "README.md"
+    authors = [{ name = "Nathan Vaughn", email = "nath@nvaughn.email" }]
+    requires-python = ">=3.9"
+    dependencies = [
+        "requests>=2.32.3",
+    ]
+
 [tool.poetry]
 name = "testproject"
 version = "0.1.0"
