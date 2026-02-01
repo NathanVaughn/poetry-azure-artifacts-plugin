@@ -7,10 +7,16 @@ import artifacts_keyring
 import requests
 from cleo.io.io import IO
 from poetry.config.config import Config
-from poetry.exceptions import PoetryException
 from poetry.plugins import Plugin
 from poetry.poetry import Poetry
 from poetry.utils.authenticator import Authenticator
+
+try:
+    from poetry.exceptions import (
+        PoetryException as PoetryError,  # pyright: ignore[reportAttributeAccessIssue]
+    )
+except ImportError:
+    from poetry.exceptions import PoetryError
 
 
 def monkeypatch_authenticator(io: IO) -> None:
@@ -38,9 +44,9 @@ def monkeypatch_authenticator(io: IO) -> None:
                 or (config is not None and "azure-artifacts" in config.name)
             ) and config:
                 # Ruff tries to line break the {config.name} string which results in a syntax error
-                # fmt:off
-                io.write_line(f"Getting new Azure Artifacts token for repo {config.name}")
-                # fmt:on
+                io.write_line(
+                    f"Getting new Azure Artifacts token for repo {config.name}"
+                )
 
                 # get token from credential provider
                 username, token = (
@@ -50,9 +56,9 @@ def monkeypatch_authenticator(io: IO) -> None:
                 # if we didn't get a token
                 if username is None or token is None:
                     # Ruff tries to line break the {config.name} string which results in a syntax error
-                    # fmt:off
-                    raise PoetryException(f"Failed getting new Azure Artifacts token for repo {config.name}")
-                    # fmt:on
+                    raise PoetryError(
+                        f"Failed getting new Azure Artifacts token for repo {config.name}"
+                    )
 
                 # set the new token
                 self._password_manager.set_http_password(config.name, username, token)

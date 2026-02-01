@@ -1,6 +1,5 @@
 import json
 import os
-import urllib.parse
 import urllib.request
 
 
@@ -22,7 +21,7 @@ def main():
     url = "https://api.github.com/repos/python-poetry/poetry/releases"
     req = urllib.request.Request(url)
     if os.getenv("GITHUB_TOKEN"):
-        req.add_header("Authorization", f'Bearer {os.environ["GITHUB_TOKEN"]}')
+        req.add_header("Authorization", f"Bearer {os.environ['GITHUB_TOKEN']}")
 
     with urllib.request.urlopen(req) as response:
         data = json.load(response)
