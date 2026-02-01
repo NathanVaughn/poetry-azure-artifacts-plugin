@@ -1,6 +1,6 @@
 [project]
     name = "poetry-azure-artifacts-plugin"
-    version = "0.1.2"
+    version = "0.1.3"
     description = "Poetry plugin to handle Azure Artifacts authentication"
     readme = "README.md"
     authors = [{ name = "Nathan Vaughn", email = "nath@nvaughn.email" }]
