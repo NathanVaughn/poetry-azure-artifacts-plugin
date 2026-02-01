@@ -1,5 +1,8 @@
 {
-    "image": "ghcr.io/nathanvaughn/devcontainers/python:latest",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
     "customizations": {
         "vscode": {
             "extensions": [
