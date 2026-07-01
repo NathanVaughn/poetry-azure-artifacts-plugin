@@ -2,12 +2,10 @@ import json
 import os
 import urllib.request
 
+import tomllib  # ty:ignore[unresolved-import]
+
 
 def main():
-    try:
-        import tomllib  # type: ignore
-    except ImportError:
-        import tomli as tomllib  # type: ignore
 
     # read minimum poetry version from pyproject.toml
     with open("pyproject.toml", "rb") as fp:
@@ -32,6 +30,9 @@ def main():
     valid_releases = [
         release for release in stable_releases if poetry_version <= release
     ]
+
+    # take only first 5 versions to keep this manageable
+    valid_releases = valid_releases[:5]
 
     # save output
     print(json.dumps(valid_releases))
