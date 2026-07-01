@@ -13,7 +13,7 @@ from poetry.utils.authenticator import Authenticator
 
 try:
     from poetry.exceptions import (
-        PoetryException as PoetryError,  # pyright: ignore[reportAttributeAccessIssue]
+        PoetryException as PoetryError,  # ty:ignore[unresolved-import]
     )
 except ImportError:
     from poetry.exceptions import PoetryError
