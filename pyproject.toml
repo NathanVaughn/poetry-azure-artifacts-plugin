@@ -38,6 +38,9 @@
 [tool.coverage.run]
     omit = ["tests/*"]
 
+[tool.ty.rules]
+    unused-ignore-comment = "ignore"
+
 [tool.uv.build-backend]
     module-root = ""
 
