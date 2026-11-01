@@ -21,7 +21,7 @@ jobs:
       - name: Install Python 3.14
         uses: actions/setup-python@v7
         with:
-          python-version: "3.14"
+          python-version: "3.15"
 
       - name: Build Matrix
         id: script
@@ -53,7 +53,7 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Setup uv
-        uses: astral-sh/setup-uv@v10.2.0
+        uses: astral-sh/setup-uv@v10.3.2
         with:
           enable-cache: true
           prune-cache: false
